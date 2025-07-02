@@ -44,9 +44,20 @@
              padding: 0 20px;
          }
          
-         /* 7번째 메뉴(JSP)는 두 번째 줄 가운데 배치 */
+         /* 5,6,7번째 메뉴는 두 번째 줄에 순서대로 배치 */
+         .nav-buttons .page-btn:nth-child(5) {
+             grid-column: 1;
+             grid-row: 2;
+         }
+         
+         .nav-buttons .page-btn:nth-child(6) {
+             grid-column: 2;
+             grid-row: 2;
+         }
+         
          .nav-buttons .page-btn:nth-child(7) {
-             grid-column: 2 / 4;
+             grid-column: 3;
+             grid-row: 2;
          }
 
                  .page-btn {
@@ -102,8 +113,12 @@
                  max-width: 800px;
              }
              
+             /* 태블릿에서는 자동 배치 */
+             .nav-buttons .page-btn:nth-child(5),
+             .nav-buttons .page-btn:nth-child(6),
              .nav-buttons .page-btn:nth-child(7) {
-                 grid-column: 2 / 3;
+                 grid-column: auto;
+                 grid-row: auto;
              }
          }
          
