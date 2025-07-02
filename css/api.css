@@ -43,13 +43,14 @@ body {
 header {
     text-align: center;
     margin-bottom: 50px;
-    padding: 60px 40px;
+    padding: 60px 40px 70px 40px;
     background: var(--api-gradient);
     border-radius: 20px;
     color: white;
     box-shadow: var(--shadow-medium);
     position: relative;
     overflow: hidden;
+    min-height: 300px;
 }
 
 header::before {

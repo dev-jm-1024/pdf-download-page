@@ -32,31 +32,42 @@
     // 메뉴 CSS 스타일
     const menuStyles = `
         <style>
-        /* 공통 메뉴 스타일 */
-        .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
+                 /* 공통 메뉴 스타일 */
+         .nav-buttons {
+             display: grid;
+             grid-template-columns: repeat(4, 1fr);
+             gap: 15px;
+             margin-top: 30px;
+             max-width: 1000px;
+             margin-left: auto;
+             margin-right: auto;
+             padding: 0 20px;
+         }
+         
+         /* 7번째 메뉴(JSP)는 두 번째 줄 가운데 배치 */
+         .nav-buttons .page-btn:nth-child(7) {
+             grid-column: 2 / 4;
+         }
 
-        .page-btn {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            font-size: 0.95rem;
-            position: relative;
-            overflow: hidden;
-        }
+                 .page-btn {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             background: rgba(255, 255, 255, 0.2);
+             color: white;
+             padding: 14px 20px;
+             border-radius: 50px;
+             text-decoration: none;
+             font-weight: 500;
+             transition: all 0.3s ease;
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255, 255, 255, 0.3);
+             font-size: 0.9rem;
+             position: relative;
+             overflow: hidden;
+             min-height: 50px;
+             text-align: center;
+         }
 
         .page-btn:hover {
             background: rgba(255, 255, 255, 0.3);
@@ -84,19 +95,50 @@
             outline-offset: 2px;
         }
 
-        /* 반응형 메뉴 */
-        @media (max-width: 768px) {
-            .nav-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .page-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-        }
+                 /* 반응형 메뉴 */
+         @media (max-width: 1024px) {
+             .nav-buttons {
+                 grid-template-columns: repeat(3, 1fr);
+                 max-width: 800px;
+             }
+             
+             .nav-buttons .page-btn:nth-child(7) {
+                 grid-column: 2 / 3;
+             }
+         }
+         
+         @media (max-width: 768px) {
+             .nav-buttons {
+                 grid-template-columns: repeat(2, 1fr);
+                 gap: 12px;
+                 padding: 0 15px;
+             }
+             
+             .nav-buttons .page-btn:nth-child(7) {
+                 grid-column: 1 / 3;
+             }
+             
+             .page-btn {
+                 padding: 12px 16px;
+                 font-size: 0.85rem;
+             }
+         }
+         
+         @media (max-width: 480px) {
+             .nav-buttons {
+                 grid-template-columns: 1fr;
+                 gap: 10px;
+             }
+             
+             .nav-buttons .page-btn:nth-child(7) {
+                 grid-column: 1;
+             }
+             
+             .page-btn {
+                 padding: 14px 20px;
+                 font-size: 0.9rem;
+             }
+         }
 
         /* 메뉴 로딩 애니메이션 */
         .page-btn {
