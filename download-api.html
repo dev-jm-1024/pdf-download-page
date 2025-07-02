@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 문서 다운로드 - PDF Download Center</title>
+    <meta name="description" content="API 개발을 위한 필수 문서들을 다운로드하세요. RESTful API, GraphQL, 웹훅, 인증 등 다양한 API 관련 자료를 제공합니다.">
+    <meta name="keywords" content="API, REST, GraphQL, 웹훅, 인증, 문서, 다운로드, 개발자">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/api.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <span class="api-logo">🔗</span>
+                API 문서 센터
+            </h1>
+            <p class="description">
+                최신 API 개발 가이드와 레퍼런스 문서를 다운로드하세요.<br>
+                RESTful API부터 GraphQL까지, 모든 API 개발 리소스를 한 곳에서 제공합니다.
+            </p>
+            
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="download.html" class="page-btn">
+                    <i class="fas fa-leaf"></i>
+                    Spring Boot
+                </a>
+                <a href="download-mongodb.html" class="page-btn">
+                    <i class="fas fa-database"></i>
+                    MongoDB
+                </a>
+                <a href="download-mysql.html" class="page-btn">
+                    <i class="fas fa-water"></i>
+                    MySQL
+                </a>
+                <a href="download-java.html" class="page-btn">
+                    <i class="fab fa-java"></i>
+                    Java
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <section class="documents">
+                <!-- API 종합 가이드 -->
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="document-title">API </h3>
+                    <p class="document-info">
+                    API란?
+                    </p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/api/API.pdf')">
+                        다운로드
+                    </button>
+                </div>
+
+                <!-- REST API 문서 -->
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="document-title">REST API </h3>
+                    <p class="document-info">
+                        RESTful 아키텍처 원칙<br>
+                        쉬는 API?
+                    </p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/api/REST_API.pdf')">
+                        다운로드
+                    </button>
+                </div>
+
+                <!-- GraphQL 문서 -->
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="document-title">GraphQL</h3>
+                    <p class="document-info">
+                        GraphQL이란?<br>
+                    </p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/api/GraphQL.pdf')">
+                        다운로드
+                    </button>
+                </div>
+
+                <!-- gRPC 문서 -->
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="document-title">gRPC</h3>
+                    <p class="document-info">
+                        gRPC란?<br>
+                        NPC마을은 아는데 gRPC 이건 뭐지?
+                    </p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/api/gRPC.pdf')">
+                        다운로드
+                    </button>
+                </div>
+
+                <!-- SOAP 문서 -->
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="document-title">SOAP </h3>
+                    <p class="document-info">
+                        비누?
+                    </p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/api/SOAP.pdf')">
+                        다운로드
+                    </button>
+                </div>
+
+                <!-- WebSocket 문서 -->
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="document-title">WebSocket 실시간 통신</h3>
+                    <p class="document-info">
+                        양방향 통신<br>
+                    </p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/api/WebSocket.pdf')">
+                        다운로드
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 API 문서 센터. 모든 문서는 최신 업계 표준을 반영합니다.</p>
+            <div class="code-block">
+                GET /api/v1/status<br>
+                → { "status": "online", "version": "2.1.0", "uptime": "99.9%" }
+            </div>
+        </footer>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="js/api.js"></script>
+    
+    <script>
+                 // Download simulation function
+         function downloadFile(filepath) {
+             console.log(`Downloading: ${filepath}`);
+             
+             // In a real application, this would trigger an actual download
+             // Create a temporary link element to trigger download
+             const link = document.createElement('a');
+             link.href = filepath;
+             link.download = filepath.split('/').pop(); // Get filename from path
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+         }
+        
+                 // Additional API-specific functionality
+         document.addEventListener('DOMContentLoaded', function() {
+             // Add API endpoint information to cards
+             const cards = document.querySelectorAll('.document-card');
+             const apiEndpoints = [
+                 '/api/v1/docs/general',
+                 '/api/v1/docs/rest',
+                 '/api/v1/docs/graphql',
+                 '/api/v1/docs/grpc',
+                 '/api/v1/docs/soap',
+                 '/api/v1/docs/websocket'
+             ];
+            
+            cards.forEach((card, index) => {
+                if (apiEndpoints[index]) {
+                    card.dataset.endpoint = apiEndpoints[index];
+                }
+            });
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/') {
+                    e.preventDefault();
+                    console.log('🔍 API 검색 모드 활성화');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

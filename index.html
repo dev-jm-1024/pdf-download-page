@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF 다운로드 센터</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- AOS - Animate On Scroll Library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="/css/index.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3" style="background-color: var(--dark-color);">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <i class="fas fa-file-pdf text-danger me-2"></i>
+          <span class="fw-bold">PDF 다운로드 센터</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">홈</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">문서 라이브러리</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">카테고리</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">최근 업데이트</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+          </ul>
+          <button class="btn btn-outline-light ms-3">로그인</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="hero-content">
+              <h1 class="text-white">필요한 <span class="highlight-text">PDF 문서</span>를 찾아보세요</h1>
+              <p class="text-white text-opacity-80 mb-5 lead">
+                다양한 카테고리의 고품질 PDF 문서를 쉽고 빠르게 다운로드하세요. 수천 개의 문서가 여러분을 기다리고 있습니다.
+              </p>
+              <div class="search-container mb-5">
+                <input type="text" class="search-input" placeholder="원하는 PDF 문서를 검색하세요..." v-model="searchQuery">
+                <button class="search-btn">
+                  <i class="fas fa-search me-2"></i> 검색
+                </button>
+              </div>
+              <div class="category-pills">
+                <div class="category-pill" v-for="category in categories" :key="category">
+                  {{ category }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="text-center">
+              <img src="/api/placeholder/600/400" alt="PDF 문서 이미지" class="img-fluid rounded-3 shadow-lg floating-image">
+              <div class="position-absolute pulse" style="top: 20%; right: 20%;">
+                <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                  <div>
+                    <div class="fw-bold">NEW</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 특징 섹션 -->
+    <section class="features-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-title" data-aos="fade-up">왜 우리의 PDF 다운로드 서비스인가요?</h2>
+            <p class="text-muted lead" data-aos="fade-up" data-aos-delay="100">
+              최고의 문서 다운로드 경험을 제공하기 위해 최선을 다하고 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-box">
+              <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4 class="mb-3">빠른 다운로드</h4>
+              <p class="text-muted mb-0">
+                고성능 서버를 통해 대용량 PDF 파일도 빠르게 다운로드할 수 있습니다.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-box">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h4 class="mb-3">안전한 파일</h4>
+              <p class="text-muted mb-0">
+                모든 파일은 바이러스 검사를 거쳐 안전하게 제공됩니다.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-box">
+              <div class="feature-icon">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <h4 class="mb-3">정기 업데이트</h4>
+              <p class="text-muted mb-0">
+                매주 새로운 문서가 추가되며 기존 문서도 지속적으로 업데이트됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 인기 PDF 섹션 -->
+    <section class="pdf-card-section">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+          <h2 class="section-title" data-aos="fade-right">인기 PDF 문서</h2>
+          <a href="#" class="btn btn-link text-primary text-decoration-none" data-aos="fade-left">
+            더 보기 <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4" v-for="(pdf, index) in popularPDFs" :key="pdf.id" 
+               data-aos="fade-up" :data-aos-delay="index * 100">
+            <div class="pdf-card">
+              <div class="pdf-card-top">
+                <img :src="pdf.image" alt="PDF 커버 이미지" class="pdf-card-image">
+                <span class="pdf-category" :style="{ backgroundColor: pdf.categoryColor }">{{ pdf.category }}</span>
+              </div>
+              <div class="pdf-card-body">
+                <h5 class="pdf-card-title">{{ pdf.title }}</h5>
+                <p class="pdf-card-text">{{ pdf.description }}</p>
+                <div class="pdf-meta">
+                  <span class="pdf-meta-item">
+                    <i class="fas fa-download"></i> {{ pdf.downloads }}
+                  </span>
+                  <span class="pdf-meta-item">
+                    <i class="fas fa-star"></i> {{ pdf.rating }}
+                  </span>
+                  <span class="pdf-meta-item">
+                    <i class="fas fa-file-alt"></i> {{ pdf.fileSize }}
+                  </span>
+                </div>
+                <button class="download-btn">
+                  <i class="fas fa-download"></i> 다운로드
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 최근 다운로드 섹션 -->
+    <section class="recent-downloads">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-title" data-aos="fade-up">최근 업데이트 문서</h2>
+            <p class="text-muted" data-aos="fade-up" data-aos-delay="100">
+              가장 최근에 추가되거나 업데이트된 PDF 문서들을 확인하세요.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div v-for="(doc, index) in recentDocuments" :key="doc.id" 
+                 data-aos="fade-up" :data-aos-delay="index * 100">
+              <div class="document-row">
+                <div class="document-icon" :style="{ backgroundColor: doc.iconColor }">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="document-info">
+                  <h5 class="document-title">{{ doc.title }}</h5>
+                  <div class="document-meta">
+                    <span><i class="fas fa-folder"></i> {{ doc.category }}</span>
+                    <span><i class="fas fa-calendar"></i> {{ doc.date }}</span>
+                    <span><i class="fas fa-file-alt"></i> {{ doc.fileSize }}</span>
+                  </div>
+                </div>
+                <button class="document-download">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 사용자 후기 섹션 -->
+    <section class="testimonial-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title d-inline-block" data-aos="fade-up">사용자 후기</h2>
+          <p class="text-muted mx-auto mt-3" style="max-width: 700px;" data-aos="fade-up" data-aos-delay="100">
+            우리 서비스를 사용한 고객들의 생생한 후기를 확인하세요.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4" v-for="(testimonial, index) in testimonials" :key="index"
+               data-aos="fade-up" :data-aos-delay="index * 100">
+            <div class="testimonial-card">
+              <div class="testimonial-avatar">
+                <img :src="testimonial.image" alt="사용자 이미지">
+              </div>
+              <h5 class="testimonial-name">{{ testimonial.name }}</h5>
+              <div class="testimonial-role">{{ testimonial.role }}</div>
+              <div class="testimonial-stars">
+                <i class="fas fa-star" v-for="i in 5" :key="i"></i>
+              </div>
+              <p class="testimonial-text">{{ testimonial.comment }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8 text-white" data-aos="fade-right">
+            <h2 class="fw-bold mb-3">지금 바로 PDF 문서를 다운로드하세요!</h2>
+            <p class="mb-4 lead">
+              고품질의 PDF 문서를 무료로 다운로드하고 필요한 정보를 얻어보세요.
+            </p>
+          </div>
+          <div class="col-lg-4 text-center text-lg-end" data-aos="fade-left">
+            <button class="cta-button">
+              지금 시작하기 <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 뉴스레터 섹션 -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-card">
+          <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+              <h2 class="mb-4">뉴스레터 구독하기</h2>
+              <p class="text-muted mb-0">
+                새로운 PDF 문서 업데이트 소식을 이메일로 받아보세요. 스팸 메일은 보내지 않습니다.
+              </p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+              <div class="input-group">
+                <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요">
+                <button class="search-btn">구독하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row py-5">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none mb-4">
+              <i class="fas fa-file-pdf text-danger me-2"></i>
+              <span class="fw-bold">PDF 다운로드 센터</span>
+            </a>
+            <p class="text-muted">
+              고품질의 PDF 문서를 무료로 제공하는 온라인 서비스입니다. 언제 어디서나 필요한 문서를 다운로드하세요.
+            </p>
+            <div class="social-icons mt-4">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h5 class="text-white mb-4">빠른 링크</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted">홈</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">문서 라이브러리</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">카테고리</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">최근 업데이트</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h5 class="text-white mb-4">카테고리</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted">비즈니스</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">교육</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">기술</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">건강</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">라이프스타일</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-white mb-4">문의하기</h5>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 서울시 강남구 테헤란로 123</li>
+              <li class="mb-2"><i class="fas fa-phone me-2"></i> 02-123-4567</li>
+              <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@pdfcenter.com</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="border-secondary">
+        <div class="row py-3">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-0 text-muted">
+              &copy; 2025 PDF 다운로드 센터. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="#" class="text-muted me-3">개인정보 처리방침</a>
+            <a href="#" class="text-muted me-3">이용약관</a>
+            <a href="#" class="text-muted">사이트맵</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Vue.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js"></script>
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS - Animate On Scroll Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="/js/index.js"></script>
+</body>
+</html>
