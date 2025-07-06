@@ -14,10 +14,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/jsp-design.css">
+    <link rel="stylesheet" href="css/jsp-design.css?v=2">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+         <style>
+         .download-btn {
+             margin-top: 20px !important;
+             pointer-events: auto !important;
+             cursor: pointer !important;
+             z-index: 100 !important;
+             position: relative !important;
+         }
+         
+         /* 다른 요소들이 버튼을 가리지 않도록 */
+         .document-card::after,
+         .document-card::before {
+             pointer-events: none !important;
+         }
+     </style>
 </head>
 <body>
     <div class="container">
@@ -32,59 +47,125 @@
         
         <main>
             <div class="documents">
+
                 <div class="document-card">
                     <div class="document-icon">
                         <i class="fas fa-globe-americas"></i>
                     </div>
-                    <h3 class="document-title">JSP 기초 - 1. JSP 개요</h3>
-                    <p class="document-info">JSP 기본 개념과 동작 원리</p>
-                    <a href="https://plusb3b.kr/pdf/jsp/jsp1.pdf" class="download-btn" download>다운로드</a>
+                    <h3 class="document-title">JSP 기초 - 1. 웹 개발 환경 이해</h3>
+                    <p class="document-info">웹 프로그래밍 개요, URL 구조, 개발 환경 설정</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-1-1.pdf', 'jsp-1-1.pdf')"><i class="fas fa-download"></i> 다운로드</button>
                 </div>
 
                 <div class="document-card">
                     <div class="document-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3 class="document-title">JSP 기초 - 2. JSP 문법</h3>
-                    <p class="document-info">JSP 스크립트릿, 표현식, 지시어</p>
-                    <a href="https://plusb3b.kr/pdf/jsp/jsp2.pdf" class="download-btn" download>다운로드</a>
+                    <h3 class="document-title">JSP 중급 - 2.1 Servlet의 개념과 동작</h3>
+                    <p class="document-info">Servlet의 기본 원리, 매핑 방식, request/response 처리</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-2-1.pdf', 'jsp-2-1.pdf')"><i class="fas fa-download"></i> 다운로드</button>
                 </div>
 
                 <div class="document-card">
                     <div class="document-icon">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-stream"></i>
                     </div>
-                    <h3 class="document-title">JSP 고급 - 3. MVC 패턴</h3>
-                    <p class="document-info">Model-View-Controller 아키텍처</p>
-                    <a href="https://plusb3b.kr/pdf/jsp/jsp3.pdf" class="download-btn" download>다운로드</a>
+                    <h3 class="document-title">JSP 중급 - 2.2 초기화 파라미터와 데이터 공유</h3>
+                    <p class="document-info">Enumeration, ServletConfig, ServletContext 활용</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-2-2.pdf', 'jsp-2-2.pdf')"><i class="fas fa-download"></i> 다운로드</button>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="document-title">JSP 중급 - 2.3 JSP 기본 구조와 태그</h3>
+                    <p class="document-info">JSP 문법, 태그 종류, 내장 객체 개념</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-2-3.pdf', 'jsp-2-3.pdf')"><i class="fas fa-download"></i> 다운로드</button>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-share-square"></i>
+                    </div>
+                    <h3 class="document-title">JSP 중급 - 2.4 응답 처리와 액션 태그</h3>
+                    <p class="document-info">Response 객체, forward vs redirect, include 사용법</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-2-4.pdf', 'jsp-2-4.pdf')">다운로드</button>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <h3 class="document-title">JSP 고급 - 3.1 쿠키와 세션</h3>
+                    <p class="document-info">상태 유지를 위한 Cookie & Session의 개념과 활용</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-3-1.pdf', 'jsp-3-1.pdf')">다운로드</button>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <h3 class="document-title">JSP 고급 - 3.2 어플리케이션, 예외처리, 자바빈</h3>
+                    <p class="document-info">JSP에서 전역 데이터, 에러 처리, JavaBean 활용</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-3-2.pdf', 'jsp-3-2.pdf')">다운로드</button> 
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="document-title">JSP 고급 - 3.3 데이터베이스 & 오라클 개요</h3>
+                    <p class="document-info">SQL, Oracle DB 기본 개념과 관리자 권한 이해</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-3-3.pdf', 'jsp-3-3.pdf')">다운로드</button>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="document-title">JSP 고급 - 3.4 SQL 연산자 & JDBC 활용</h3>
+                    <p class="document-info">JDBC 연결 흐름, SQL 활용 예제와 자바 연동</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-3-4.pdf', 'jsp-3-4.pdf')">다운로드</button>
                 </div>
 
                 <div class="document-card">
                     <div class="document-icon">
                         <i class="fas fa-database"></i>
                     </div>
-                    <h3 class="document-title">JSP 데이터베이스 연동</h3>
-                    <p class="document-info">JDBC를 활용한 데이터베이스 처리</p>
-                    <a href="https://plusb3b.kr/pdf/jsp/jsp-db.pdf" class="download-btn" download>다운로드</a>
+                    <h3 class="document-title">JSP 실전 - 4.1 JDBC 고급 활용</h3>
+                    <p class="document-info">executeUpdate, PreparedStatement, DAO/DTO 설계</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-4-1.pdf', 'jsp-4-1.pdf')">다운로드</button>
                 </div>
-
+                
                 <div class="document-card">
                     <div class="document-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-network-wired"></i>
                     </div>
-                    <h3 class="document-title">JSP 세션 및 보안</h3>
-                    <p class="document-info">세션 관리와 웹 보안 구현</p>
-                    <a href="https://plusb3b.kr/pdf/jsp/jsp-security.pdf" class="download-btn" download>다운로드</a>
+                    <h3 class="document-title">JSP 실전 - 4.2 DBCP, EL, JSTL</h3>
+                    <p class="document-info">DB 커넥션 풀 구성과 JSTL, EL 기본 문법</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-4-2.pdf', 'jsp-4-2.pdf')">다운로드</button>
                 </div>
-
+                
                 <div class="document-card">
                     <div class="document-icon">
-                        <i class="fas fa-tags"></i>
+                        <i class="fas fa-users-cog"></i>
                     </div>
-                    <h3 class="document-title">JSP 커스텀 태그</h3>
-                    <p class="document-info">JSTL과 커스텀 태그 라이브러리</p>
-                    <a href="https://plusb3b.kr/pdf/jsp/jsp-tags.pdf" class="download-btn" download>다운로드</a>
+                    <h3 class="document-title">JSP 실전 - 회원관리 & 게시판 구현 1편</h3>
+                    <p class="document-info">DB 테이블 설계부터 로그인, 회원가입, 수정, 탈퇴 구현</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-회원관리및게시판구현1.pdf', 'jsp-회원관리및게시판구현1.pdf')">다운로드</button>
                 </div>
+                
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="document-title">JSP 실전 - 회원관리 & 게시판 구현 2편</h3>
+                    <p class="document-info">게시글 작성, 수정, 상세 조회, 세션 인증 처리</p>
+                    <button class="download-btn" onclick="downloadFile('https://plusb3b.kr/pdf/jsp/jsp-회원관리및게시판구현2.pdf', 'jsp-회원관리및게시판구현2.pdf')">다운로드</button>
+                </div>
+                
+
             </div>
         </main>
         
@@ -92,7 +173,42 @@
             <p>© 2025 JSP 문서 다운로드 센터. 모든 권리 보유.</p>
         </footer>
     </div>
+             
     <script src="js/jsp-design.js"></script>
     <script src="js/menu-loader.js"></script>
+    <script>
+                 // 안정적인 다운로드 함수
+         function downloadFile(url, filename) {
+             console.log('다운로드 시도:', url);
+             
+             try {
+                 // 방법 1: 새 창에서 PDF 열기
+                 const newWindow = window.open(url, '_blank');
+                 
+                 // 방법 2: 다운로드 링크 생성 (약간의 지연)
+                 setTimeout(() => {
+                     const link = document.createElement('a');
+                     link.href = url;
+                     link.download = filename;
+                     link.style.display = 'none';
+                     document.body.appendChild(link);
+                     link.click();
+                     document.body.removeChild(link);
+                     console.log('다운로드 링크 실행됨');
+                 }, 100);
+                 
+                 // 방법 3: 팝업이 차단된 경우 대안
+                 if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                     console.log('팝업 차단됨, 대안 방법 사용');
+                     window.location.href = url;
+                 }
+                 
+             } catch (error) {
+                 console.error('다운로드 오류:', error);
+                 // 최후의 수단
+                 window.location.href = url;
+             }
+         }
+    </script>
 </body>
-</html> 
+</html>
