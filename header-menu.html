@@ -9,8 +9,8 @@
     <a href="https://plusb3b.kr/pdf-download-page/download-api.html" class="page-btn">
         <i class="fas fa-code"></i> API 페이지
     </a>
-    <a href="https://plusb3b.kr/pdf-download-page/download-oop.html" class="page-btn">
-        <i class="fas fa-cube"></i> Java 페이지
+    <a href="https://plusb3b.kr/pdf-download-page/download-modern-java.html" class="page-btn">
+        <i class="fab fa-java"></i> Modern Java 페이지
     </a>
     <a href="https://plusb3b.kr/pdf-download-page/download-mysql.html" class="page-btn">
         <i class="fas fa-server"></i> MySQL 페이지
@@ -20,6 +20,9 @@
     </a>
     <a href="https://plusb3b.kr/pdf-download-page/download-jsp.html" class="page-btn">
         <i class="fas fa-globe"></i> JSP 페이지
+    </a>
+    <a href="https://plusb3b.kr/pdf-download-page/download-linux.html" class="page-btn">
+        <i class="fas fa-terminal"></i> Linux 페이지
     </a>
 </div>
 
@@ -60,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 키보드 네비게이션 지원
     document.addEventListener('keydown', function(e) {
         // Alt + 숫자키로 메뉴 이동
-        if (e.altKey && e.key >= '1' && e.key <= '7') {
+        if (e.altKey && e.key >= '1' && e.key <= '8') {
             e.preventDefault();
             const index = parseInt(e.key) - 1;
             if (menuButtons[index]) {
@@ -77,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 메뉴 통계 (선택사항)
     console.log(`📊 총 ${menuButtons.length}개의 메뉴가 로드되었습니다.`);
-    console.log('🔧 키보드 단축키: Alt + 1~7 (메뉴 이동), Alt + M (메뉴 포커스)');
+    console.log('🔧 키보드 단축키: Alt + 1~8 (메뉴 이동), Alt + M (메뉴 포커스)');
 });
 
 // 메뉴 유틸리티 함수들
@@ -88,10 +91,11 @@ window.MenuUtils = {
             'spring': 'download.html',
             'mongodb': 'download-mongodb.html',
             'api': 'download-api.html',
-            'java': 'download-oop.html',
+            'java': 'download-modern-java.html',
             'mysql': 'download-mysql.html',
             'oop': 'download-oop.html',
-            'jsp': 'download-jsp.html'
+            'jsp': 'download-jsp.html',
+            'linux': 'download-linux.html'
         };
         
         if (pageMap[pageName]) {
@@ -106,9 +110,10 @@ window.MenuUtils = {
             'download.html': 'Spring Boot',
             'download-mongodb.html': 'MongoDB',
             'download-api.html': 'API',
-            'download-oop.html': 'Java/OOP',
+            'download-modern-java.html': 'Modern Java',
             'download-mysql.html': 'MySQL',
-            'download-jsp.html': 'JSP'
+            'download-jsp.html': 'JSP',
+            'download-linux.html': 'Linux'
         };
         
         return pageNames[currentPage] || '알 수 없음';
@@ -120,10 +125,11 @@ window.MenuUtils = {
             'Spring Boot',
             'MongoDB', 
             'API',
-            'Java',
+            'Modern Java',
             'MySQL',
             'OOP 설계',
-            'JSP'
+            'JSP',
+            'Linux'
         ];
     }
 };

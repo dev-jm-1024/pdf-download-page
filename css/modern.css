@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+:root {
+    --java-orange: #f89820;
+    --java-red: #ed8b00;
+    --java-blue: #5382a1;
+    --java-dark-blue: #2f4f4f;
+    --java-light-blue: #7ba8c7;
+    --java-white: #ffffff;
+    --java-gray: #f4f4f4;
+    --java-dark-gray: #333333;
+    --java-code-bg: #1e1e1e;
+    --java-gradient: linear-gradient(135deg, #f89820 0%, #ed8b00 100%);
+    --java-card-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    --shadow-light: 0 2px 10px rgba(248, 152, 32, 0.1);
+    --shadow-medium: 0 4px 20px rgba(248, 152, 32, 0.15);
+    --shadow-heavy: 0 8px 30px rgba(248, 152, 32, 0.2);
+}
+
+body {
+    background: linear-gradient(135deg, #fafbfc 0%, #f1f3f4 100%);
+    color: var(--java-dark-gray);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 50px 0 60px 0;
+    background: var(--java-gradient);
+    border-radius: 20px;
+    color: white;
+    box-shadow: var(--shadow-heavy);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="java-pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><text x="15" y="20" text-anchor="middle" fill="rgba(255,255,255,0.05)" font-size="12" font-family="monospace">{ }</text></pattern></defs><rect width="100" height="100" fill="url(%23java-pattern)"/></svg>');
+    opacity: 0.6;
+}
+
+header::after {
+    content: 'public class ModernJava { }';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+.java-logo {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 3rem;
+    animation: javaBounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes javaBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-5deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+    75% { transform: translateY(-3px) rotate(3deg); }
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.95rem;
+}
+
+.page-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.page-btn i {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.page-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Document Cards */
+.documents {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.document-card {
+    background: var(--java-card-gradient);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(248, 152, 32, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.document-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--java-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.document-card::after {
+    content: '// Java Code';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: rgba(248, 152, 32, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.document-card:hover::before {
+    transform: scaleX(1);
+}
+
+.document-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--java-orange);
+}
+
+.document-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--java-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(248, 152, 32, 0.1);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.document-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: var(--java-gradient);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.document-card:hover .document-icon::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.document-card:hover .document-icon {
+    color: white;
+    transform: scale(1.1);
+}
+
+.document-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--java-dark-gray);
+    text-align: center;
+    line-height: 1.4;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+}
+
+.document-info {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.download-btn {
+    display: block;
+    background: var(--java-gradient);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(248, 152, 32, 0.3);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    margin-top: 80px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    padding: 30px 0;
+    border-top: 1px solid rgba(248, 152, 32, 0.1);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Java-specific animations */
+@keyframes codeTyping {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+.document-card:hover .document-title {
+    animation: codeTyping 0.5s ease-out;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--java-orange);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .java-logo {
+        font-size: 2.5rem;
+    }
+    
+    .documents {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .page-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .document-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 30px 20px;
+        margin: 0 -20px 30px;
+        border-radius: 0;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .document-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    .document-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.page-btn:focus,
+.download-btn:focus {
+    outline: 2px solid var(--java-orange);
+    outline-offset: 2px;
+}
+
+/* Java code-like effects */
+.document-card:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+}
+
+/* Print styles */
+@media print {
+    header {
+        background: none !important;
+        color: var(--java-dark-gray) !important;
+        box-shadow: none !important;
+    }
+    
+    .document-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .page-btn,
+    .download-btn {
+        background: none !important;
+        color: var(--java-dark-gray) !important;
+        border: 1px solid var(--java-orange) !important;
+    }
+} 

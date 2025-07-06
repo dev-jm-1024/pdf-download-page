@@ -1,0 +1,424 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+:root {
+    --linux-terminal-black: #1e1e1e;
+    --linux-terminal-green: #00ff00;
+    --linux-ubuntu-orange: #e95420;
+    --linux-debian-red: #d70a53;
+    --linux-mint-green: #87ceeb;
+    --linux-dark-gray: #2d2d2d;
+    --linux-light-gray: #3c3c3c;
+    --linux-text-green: #00d000;
+    --linux-gradient: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    --terminal-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-heavy: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background: var(--linux-terminal-black);
+    color: var(--linux-text-green);
+    line-height: 1.6;
+    min-height: 100vh;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 50px 0 60px 0;
+    background: var(--terminal-gradient);
+    border: 2px solid var(--linux-terminal-green);
+    border-radius: 8px;
+    color: var(--linux-terminal-green);
+    box-shadow: var(--shadow-heavy);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    opacity: 0.5;
+}
+
+header::after {
+    content: '$ ';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--linux-terminal-green);
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    animation: blink 1s infinite;
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--linux-terminal-green);
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    letter-spacing: 2px;
+}
+
+.linux-logo {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 3rem;
+    animation: linuxBounce 2s ease-in-out infinite;
+}
+
+@keyframes linuxBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.description {
+    color: rgba(0, 255, 0, 0.8);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.95rem;
+}
+
+.page-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.page-btn i {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.page-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Document Cards */
+.documents {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.document-card {
+    background: var(--linux-dark-gray);
+    border: 2px solid var(--linux-light-gray);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.document-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--linux-terminal-green);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.document-card:hover::before {
+    transform: scaleX(1);
+}
+
+.document-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--linux-terminal-green);
+    background: var(--linux-light-gray);
+}
+
+.document-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--linux-terminal-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid var(--linux-terminal-green);
+    border-radius: 8px;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+}
+
+.document-card:hover .document-icon {
+    background: var(--linux-terminal-green);
+    color: var(--linux-terminal-black);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--linux-terminal-green);
+}
+
+.document-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--linux-terminal-green);
+    text-align: center;
+    line-height: 1.4;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+}
+
+.document-info {
+    color: rgba(0, 255, 0, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+}
+
+.download-btn {
+    display: block;
+    background: var(--linux-terminal-black);
+    color: var(--linux-terminal-green);
+    padding: 12px 24px;
+    border: 2px solid var(--linux-terminal-green);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 255, 0, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    background: var(--linux-terminal-green);
+    color: var(--linux-terminal-black);
+    box-shadow: 0 0 20px var(--linux-terminal-green);
+    text-shadow: none;
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    margin-top: 80px;
+    text-align: center;
+    color: rgba(0, 255, 0, 0.6);
+    font-size: 0.9rem;
+    padding: 30px 0;
+    border-top: 1px solid var(--linux-terminal-green);
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .linux-logo {
+        font-size: 2.5rem;
+    }
+    
+    .documents {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .page-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .document-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 30px 20px;
+        margin: 0 -20px 30px;
+        border-radius: 0;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .document-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.page-btn:focus,
+.download-btn:focus {
+    outline: 2px solid var(--linux-terminal-green);
+    outline-offset: 2px;
+}
+
+/* Terminal-like blinking cursor */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Matrix-like effect for cards */
+.document-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.01) 2px,
+        rgba(0, 255, 0, 0.01) 4px
+    );
+    pointer-events: none;
+}
+
+/* Print styles */
+@media print {
+    header {
+        background: none !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .document-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .page-btn,
+    .download-btn {
+        background: none !important;
+        color: black !important;
+        border: 1px solid black !important;
+    }
+} 

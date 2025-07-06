@@ -14,8 +14,8 @@
             <a href="https://plusb3b.kr/pdf-download-page/download-api.html" class="page-btn">
                 <i class="fas fa-code"></i> API 페이지
             </a>
-            <a href="https://plusb3b.kr/pdf-download-page/download-oop.html" class="page-btn">
-                <i class="fas fa-cube"></i> Java 페이지
+            <a href="https://plusb3b.kr/pdf-download-page/download-modern-java.html" class="page-btn">
+                <i class="fab fa-java"></i> Modern Java 페이지
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-mysql.html" class="page-btn">
                 <i class="fas fa-server"></i> MySQL 페이지
@@ -25,6 +25,9 @@
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-jsp.html" class="page-btn">
                 <i class="fas fa-globe"></i> JSP 페이지
+            </a>
+            <a href="https://plusb3b.kr/pdf-download-page/download-linux.html" class="page-btn">
+                <i class="fas fa-terminal"></i> Linux 페이지
             </a>
         </div>
     `;
@@ -55,8 +58,13 @@
              grid-row: 2;
          }
          
-         .nav-buttons .page-btn:nth-child(7) {
+         .nav-buttons          .page-btn:nth-child(7) {
              grid-column: 3;
+             grid-row: 2;
+         }
+         
+         .nav-buttons .page-btn:nth-child(8) {
+             grid-column: 4;
              grid-row: 2;
          }
 
@@ -130,7 +138,11 @@
              }
              
              .nav-buttons .page-btn:nth-child(7) {
-                 grid-column: 1 / 3;
+                 grid-column: 1;
+             }
+             
+             .nav-buttons .page-btn:nth-child(8) {
+                 grid-column: 2;
              }
              
              .page-btn {
@@ -145,7 +157,8 @@
                  gap: 10px;
              }
              
-             .nav-buttons .page-btn:nth-child(7) {
+             .nav-buttons .page-btn:nth-child(7),
+             .nav-buttons .page-btn:nth-child(8) {
                  grid-column: 1;
              }
              
@@ -168,6 +181,7 @@
         .page-btn:nth-child(5) { animation-delay: 0.5s; }
         .page-btn:nth-child(6) { animation-delay: 0.6s; }
         .page-btn:nth-child(7) { animation-delay: 0.7s; }
+        .page-btn:nth-child(8) { animation-delay: 0.8s; }
 
         @keyframes menuFadeIn {
             from {
@@ -270,7 +284,7 @@
         // 키보드 네비게이션 지원
         document.addEventListener('keydown', function(e) {
             // Alt + 숫자키로 메뉴 이동
-            if (e.altKey && e.key >= '1' && e.key <= '7') {
+            if (e.altKey && e.key >= '1' && e.key <= '8') {
                 e.preventDefault();
                 const index = parseInt(e.key) - 1;
                 if (menuButtons[index]) {
@@ -288,7 +302,7 @@
         });
         
         console.log(`📊 공통 메뉴 로드 완료: ${menuButtons.length}개 메뉴`);
-        console.log('🔧 키보드 단축키: Alt + 1~7 (메뉴 이동), Alt + M (메뉴 포커스)');
+        console.log('🔧 키보드 단축키: Alt + 1~8 (메뉴 이동), Alt + M (메뉴 포커스)');
     }
     
     // 메뉴 유틸리티 함수들
@@ -304,10 +318,11 @@
                 'spring': 'download.html',
                 'mongodb': 'download-mongodb.html',
                 'api': 'download-api.html',
-                'java': 'download-oop.html',
+                'java': 'download-modern-java.html',
                 'mysql': 'download-mysql.html',
                 'oop': 'download-oop.html',
-                'jsp': 'download-jsp.html'
+                'jsp': 'download-jsp.html',
+                'linux': 'download-linux.html'
             };
             
             if (pageMap[pageName]) {
@@ -322,9 +337,10 @@
                 'download.html': 'Spring Boot',
                 'download-mongodb.html': 'MongoDB',
                 'download-api.html': 'API',
-                'download-oop.html': 'Java/OOP',
+                'download-modern-java.html': 'Modern Java',
                 'download-mysql.html': 'MySQL',
-                'download-jsp.html': 'JSP'
+                'download-jsp.html': 'JSP',
+                'download-linux.html': 'Linux'
             };
             
             return pageNames[currentPage] || '알 수 없음';
@@ -336,10 +352,11 @@
                 'Spring Boot',
                 'MongoDB', 
                 'API',
-                'Java',
+                'Modern Java',
                 'MySQL',
                 'OOP 설계',
-                'JSP'
+                'JSP',
+                'Linux'
             ];
         },
         
@@ -374,7 +391,7 @@ console.log(`
 - MenuUtils.navigateTo('spring') : Spring Boot 페이지로 이동
 - MenuUtils.getCurrentPage() : 현재 페이지 이름 반환
 - MenuUtils.reload() : 메뉴 다시 로드
-- Alt + 1~7 : 키보드로 메뉴 이동
+- Alt + 1~8 : 키보드로 메뉴 이동
 - Alt + M : 메뉴 포커스
 
 모든 페이지에서 일관된 네비게이션을 제공합니다! 🚀
