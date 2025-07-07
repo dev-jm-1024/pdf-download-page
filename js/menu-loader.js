@@ -32,6 +32,9 @@
             <a href="https://plusb3b.kr/pdf-download-page/download-kotlin.html" class="page-btn">
                 <i class="fas fa-code"></i> Kotlin
             </a>
+            <a href="https://plusb3b.kr/pdf-download-page/download-error.html" class="page-btn">
+                <i class="fas fa-bug"></i> 디버깅 핸드북
+            </a>
         </div>
     `;
     
@@ -50,7 +53,7 @@
              padding: 0 20px;
          }
          
-         /* 5,6,7번째 메뉴는 두 번째 줄에 순서대로 배치 */
+         /* 5,6,7,8번째 메뉴는 두 번째 줄에 순서대로 배치 */
          .nav-buttons .page-btn:nth-child(5) {
              grid-column: 1;
              grid-row: 2;
@@ -69,6 +72,17 @@
          .nav-buttons .page-btn:nth-child(8) {
              grid-column: 4;
              grid-row: 2;
+         }
+         
+         /* 9,10번째 메뉴는 세 번째 줄에 배치 */
+         .nav-buttons .page-btn:nth-child(9) {
+             grid-column: 1;
+             grid-row: 3;
+         }
+         
+         .nav-buttons .page-btn:nth-child(10) {
+             grid-column: 2;
+             grid-row: 3;
          }
 
                  .page-btn {
@@ -186,6 +200,7 @@
         .page-btn:nth-child(7) { animation-delay: 0.7s; }
         .page-btn:nth-child(8) { animation-delay: 0.8s; }
         .page-btn:nth-child(9) { animation-delay: 0.9s; }
+        .page-btn:nth-child(10) { animation-delay: 1.0s; }
 
         @keyframes menuFadeIn {
             from {

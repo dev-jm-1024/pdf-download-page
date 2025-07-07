@@ -27,6 +27,9 @@
     <a href="https://plusb3b.kr/pdf-download-page/download-kotlin.html" class="page-btn">
         <i class="fas fa-code"></i> Kotlin
     </a>
+    <a href="https://plusb3b.kr/pdf-download-page/download-error.html" class="page-btn">
+        <i class="fas fa-bug"></i> 디버깅 핸드북
+    </a>
 </div>
 
 <script>
@@ -65,12 +68,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 키보드 네비게이션 지원
     document.addEventListener('keydown', function(e) {
-        // Alt + 숫자키로 메뉴 이동
+        // Alt + 숫자키로 메뉴 이동 (1-9, 0은 10번째)
         if (e.altKey && e.key >= '1' && e.key <= '9') {
             e.preventDefault();
             const index = parseInt(e.key) - 1;
             if (menuButtons[index]) {
                 menuButtons[index].click();
+            }
+        } else if (e.altKey && e.key === '0') {
+            e.preventDefault();
+            // Alt + 0 for 10th menu item (디버깅 핸드북)
+            if (menuButtons[9]) {
+                menuButtons[9].click();
             }
         }
         
@@ -83,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 메뉴 통계 (선택사항)
     console.log(`📊 총 ${menuButtons.length}개의 메뉴가 로드되었습니다.`);
-    console.log('🔧 키보드 단축키: Alt + 1~8 (메뉴 이동), Alt + M (메뉴 포커스)');
+    console.log('🔧 키보드 단축키: Alt + 1~9, 0 (메뉴 이동), Alt + M (메뉴 포커스)');
 });
 
 // 메뉴 유틸리티 함수들
@@ -99,7 +108,8 @@ window.MenuUtils = {
                 'oop': 'download-oop.html',
                 'jsp': 'download-jsp.html',
                 'linux': 'download-linux.html',
-                'kotlin': 'download-kotlin.html'
+                'kotlin': 'download-kotlin.html',
+                'debug': 'download-error.html'
             };
             
             if (pageMap[pageName]) {
@@ -118,7 +128,8 @@ window.MenuUtils = {
                 'download-mysql.html': 'MySQL',
                 'download-jsp.html': 'JSP',
                 'download-linux.html': 'Linux',
-                'download-kotlin.html': 'Kotlin'
+                'download-kotlin.html': 'Kotlin',
+                'download-error.html': '디버깅 핸드북'
             };
             
             return pageNames[currentPage] || '알 수 없음';
@@ -135,7 +146,8 @@ window.MenuUtils = {
                 'OOP 설계',
                 'JSP',
                 'Linux',
-                'Kotlin'
+                'Kotlin',
+                '디버깅 핸드북'
             ];
         }
 };
