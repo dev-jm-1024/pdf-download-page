@@ -29,6 +29,9 @@
             <a href="https://plusb3b.kr/pdf-download-page/download-linux.html" class="page-btn">
                 <i class="fas fa-terminal"></i> Linux 페이지
             </a>
+            <a href="https://plusb3b.kr/pdf-download-page/download-kotlin.html" class="page-btn">
+                <i class="fas fa-code"></i> Kotlin 페이지
+            </a>
         </div>
     `;
     
@@ -182,6 +185,7 @@
         .page-btn:nth-child(6) { animation-delay: 0.6s; }
         .page-btn:nth-child(7) { animation-delay: 0.7s; }
         .page-btn:nth-child(8) { animation-delay: 0.8s; }
+        .page-btn:nth-child(9) { animation-delay: 0.9s; }
 
         @keyframes menuFadeIn {
             from {
@@ -284,7 +288,7 @@
         // 키보드 네비게이션 지원
         document.addEventListener('keydown', function(e) {
             // Alt + 숫자키로 메뉴 이동
-            if (e.altKey && e.key >= '1' && e.key <= '8') {
+            if (e.altKey && e.key >= '1' && e.key <= '9') {
                 e.preventDefault();
                 const index = parseInt(e.key) - 1;
                 if (menuButtons[index]) {
@@ -322,7 +326,8 @@
                 'mysql': 'download-mysql.html',
                 'oop': 'download-oop.html',
                 'jsp': 'download-jsp.html',
-                'linux': 'download-linux.html'
+                'linux': 'download-linux.html',
+                'kotlin': 'download-kotlin.html'
             };
             
             if (pageMap[pageName]) {
@@ -340,7 +345,8 @@
                 'download-modern-java.html': 'Modern Java',
                 'download-mysql.html': 'MySQL',
                 'download-jsp.html': 'JSP',
-                'download-linux.html': 'Linux'
+                'download-linux.html': 'Linux',
+                'download-kotlin.html': 'Kotlin'
             };
             
             return pageNames[currentPage] || '알 수 없음';
@@ -356,7 +362,8 @@
                 'MySQL',
                 'OOP 설계',
                 'JSP',
-                'Linux'
+                'Linux',
+                'Kotlin'
             ];
         },
         
