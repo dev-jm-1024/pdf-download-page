@@ -6,7 +6,7 @@
     const menuTemplate = `
         <div class="nav-buttons">
             <a href="https://plusb3b.kr/pdf-download-page/download.html" class="page-btn">
-                <i class="fas fa-leaf"></i> Spring Boot 페이지
+                <i class="fas fa-leaf"></i> Spring Boot <!-- 기존: Spring Boot 페이지 (3글자 단축) -->
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-mongodb.html" class="page-btn">
                 <i class="fas fa-database"></i> MongoDB 페이지
@@ -15,7 +15,7 @@
                 <i class="fas fa-code"></i> API 페이지
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-modern-java.html" class="page-btn">
-                <i class="fab fa-java"></i> Modern Java 페이지
+                <i class="fab fa-java"></i> Modern Java <!-- 기존: Modern Java 페이지 (3글자 단축) -->
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-mysql.html" class="page-btn">
                 <i class="fas fa-server"></i> MySQL 페이지
@@ -30,7 +30,7 @@
                 <i class="fas fa-terminal"></i> Linux 페이지
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-kotlin.html" class="page-btn">
-                <i class="fas fa-code"></i> Kotlin 페이지
+                <i class="fas fa-code"></i> Kotlin
             </a>
         </div>
     `;
