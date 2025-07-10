@@ -9,25 +9,25 @@
                 <i class="fas fa-leaf"></i> Spring Boot <!-- 기존: Spring Boot 페이지 (3글자 단축) -->
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-mongodb.html" class="page-btn">
-                <i class="fas fa-database"></i> MongoDB 페이지
+                <i class="fas fa-database"></i> MongoDB
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-api.html" class="page-btn">
-                <i class="fas fa-code"></i> API 페이지
+                <i class="fas fa-code"></i> API
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-modern-java.html" class="page-btn">
                 <i class="fab fa-java"></i> Modern Java <!-- 기존: Modern Java 페이지 (3글자 단축) -->
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-mysql.html" class="page-btn">
-                <i class="fas fa-server"></i> MySQL 페이지
+                <i class="fas fa-server"></i> MySQL
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-oop.html" class="page-btn">
-                <i class="fas fa-cube"></i> OOP 설계 페이지
+                <i class="fas fa-cube"></i> OOP
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-jsp.html" class="page-btn">
-                <i class="fas fa-globe"></i> JSP 페이지
+                <i class="fas fa-globe"></i> JSP 
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-linux.html" class="page-btn">
-                <i class="fas fa-terminal"></i> Linux 페이지
+                <i class="fas fa-terminal"></i> Linux
             </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-kotlin.html" class="page-btn">
                 <i class="fas fa-code"></i> Kotlin
@@ -149,22 +149,28 @@
          
          @media (max-width: 768px) {
              .nav-buttons {
-                 grid-template-columns: repeat(2, 1fr);
-                 gap: 12px;
-                 padding: 0 15px;
+                 display: grid !important;
+                 grid-template-columns: 1fr 1fr !important;
+                 grid-template-rows: repeat(5, 1fr) !important;
+                 grid-auto-flow: row !important;
+                 gap: 12px !important;
+                 padding: 0 15px !important;
+                 width: 100% !important;
+                 box-sizing: border-box !important;
              }
              
-             .nav-buttons .page-btn:nth-child(7) {
-                 grid-column: 1;
-             }
-             
-             .nav-buttons .page-btn:nth-child(8) {
-                 grid-column: 2;
-             }
-             
-             .page-btn {
-                 padding: 12px 16px;
-                 font-size: 0.85rem;
+             .nav-buttons .page-btn {
+                 grid-column: auto !important;
+                 grid-row: auto !important;
+                 padding: 12px 16px !important;
+                 font-size: 0.85rem !important;
+                 min-height: 48px !important;
+                 display: flex !important;
+                 align-items: center !important;
+                 justify-content: center !important;
+                 text-align: center !important;
+                 width: 100% !important;
+                 box-sizing: border-box !important;
              }
          }
          
