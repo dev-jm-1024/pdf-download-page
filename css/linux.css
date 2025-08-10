@@ -6,23 +6,27 @@
 }
 
 :root {
-    --spring-green: #6db33f;
-    --spring-dark-green: #5a9a35;
-    --spring-light-green: #7bc142;
-    --spring-accent: #34495e;
-    --spring-light: #ecf0f1;
-    --spring-dark: #2c3e50;
-    --spring-gradient: linear-gradient(135deg, #6db33f 0%, #5a9a35 100%);
-    --shadow-light: 0 2px 10px rgba(109, 179, 63, 0.1);
-    --shadow-medium: 0 4px 20px rgba(109, 179, 63, 0.15);
-    --shadow-heavy: 0 8px 30px rgba(109, 179, 63, 0.2);
+    --linux-terminal-black: #1e1e1e;
+    --linux-terminal-green: #00ff00;
+    --linux-ubuntu-orange: #e95420;
+    --linux-debian-red: #d70a53;
+    --linux-mint-green: #87ceeb;
+    --linux-dark-gray: #2d2d2d;
+    --linux-light-gray: #3c3c3c;
+    --linux-text-green: #00d000;
+    --linux-gradient: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    --terminal-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-heavy: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 body {
-    background: linear-gradient(135deg, #f8fffe 0%, #f0f8f0 100%);
-    color: var(--spring-dark);
+    background: var(--linux-terminal-black);
+    color: var(--linux-text-green);
     line-height: 1.6;
     min-height: 100vh;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 .container {
@@ -36,13 +40,15 @@ header {
     text-align: center;
     margin-bottom: 50px;
     padding: 50px 0 60px 0;
-    background: var(--spring-gradient);
-    border-radius: 20px;
-    color: white;
-    box-shadow: var(--shadow-medium);
+    background: var(--terminal-gradient);
+    border: 2px solid var(--linux-terminal-green);
+    border-radius: 8px;
+    color: var(--linux-terminal-green);
+    box-shadow: var(--shadow-heavy);
     position: relative;
     overflow: hidden;
     min-height: 280px;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 header::before {
@@ -52,8 +58,25 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="spring-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23spring-pattern)"/></svg>');
-    opacity: 0.3;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    opacity: 0.5;
+}
+
+header::after {
+    content: '$ ';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--linux-terminal-green);
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    animation: blink 1s infinite;
 }
 
 header > * {
@@ -65,26 +88,29 @@ h1 {
     font-size: 2.5rem;
     margin-bottom: 15px;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 10px var(--linux-terminal-green);
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    letter-spacing: 2px;
 }
 
-.spring-logo {
+.linux-logo {
     display: inline-block;
     margin-right: 15px;
     font-size: 3rem;
-    animation: springBounce 2s ease-in-out infinite;
+    animation: linuxBounce 2s ease-in-out infinite;
 }
 
-@keyframes springBounce {
+@keyframes linuxBounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
 .description {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 255, 0, 0.8);
     margin-bottom: 30px;
     font-size: 1.1rem;
     font-weight: 300;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 /* Navigation Buttons */
@@ -175,12 +201,12 @@ h1 {
 }
 
 .document-card {
-    background: white;
-    border-radius: 16px;
+    background: var(--linux-dark-gray);
+    border: 2px solid var(--linux-light-gray);
+    border-radius: 8px;
     padding: 30px;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow-medium);
     transition: all 0.3s ease;
-    border: 1px solid rgba(109, 179, 63, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -192,7 +218,7 @@ h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--spring-gradient);
+    background: var(--linux-terminal-green);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -204,61 +230,69 @@ h1 {
 .document-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-heavy);
-    border-color: var(--spring-green);
+    border-color: var(--linux-terminal-green);
+    background: var(--linux-light-gray);
 }
 
 .document-icon {
     font-size: 3rem;
     margin-bottom: 20px;
-    color: var(--spring-green);
+    color: var(--linux-terminal-green);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
     height: 80px;
-    background: rgba(109, 179, 63, 0.1);
-    border-radius: 50%;
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid var(--linux-terminal-green);
+    border-radius: 8px;
     margin: 0 auto 20px;
     transition: all 0.3s ease;
 }
 
 .document-card:hover .document-icon {
-    background: var(--spring-green);
-    color: white;
+    background: var(--linux-terminal-green);
+    color: var(--linux-terminal-black);
     transform: scale(1.1);
+    box-shadow: 0 0 20px var(--linux-terminal-green);
 }
 
 .document-title {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 12px;
-    color: var(--spring-dark);
+    color: var(--linux-terminal-green);
     text-align: center;
     line-height: 1.4;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 .document-info {
-    color: #7f8c8d;
+    color: rgba(0, 255, 0, 0.7);
     font-size: 0.9rem;
     margin-bottom: 20px;
     text-align: center;
     font-weight: 400;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 .download-btn {
     display: block;
-    background: var(--spring-gradient);
-    color: white;
+    background: var(--linux-terminal-black);
+    color: var(--linux-terminal-green);
     padding: 12px 24px;
-    border-radius: 50px;
+    border: 2px solid var(--linux-terminal-green);
+    border-radius: 4px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
     text-align: center;
-    border: none;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .download-btn::before {
@@ -268,7 +302,7 @@ h1 {
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 255, 0, 0.2);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease;
@@ -281,7 +315,10 @@ h1 {
 
 .download-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(109, 179, 63, 0.3);
+    background: var(--linux-terminal-green);
+    color: var(--linux-terminal-black);
+    box-shadow: 0 0 20px var(--linux-terminal-green);
+    text-shadow: none;
 }
 
 .download-btn:active {
@@ -292,10 +329,11 @@ h1 {
 footer {
     margin-top: 80px;
     text-align: center;
-    color: #7f8c8d;
+    color: rgba(0, 255, 0, 0.6);
     font-size: 0.9rem;
     padding: 30px 0;
-    border-top: 1px solid rgba(109, 179, 63, 0.1);
+    border-top: 1px solid var(--linux-terminal-green);
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 /* Loading Animation */
@@ -341,7 +379,7 @@ footer {
         font-size: 2rem;
     }
     
-    .spring-logo {
+    .linux-logo {
         font-size: 2.5rem;
     }
     
@@ -351,14 +389,45 @@ footer {
     }
     
     .nav-buttons {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding: 0 15px;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: repeat(5, 1fr) !important;
+        grid-auto-flow: row !important;
+        gap: 8px !important;
+        padding: 15px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: none !important;
     }
     
-    .page-btn {
-        padding: 12px 16px;
-        font-size: 0.85rem;
+    .nav-buttons .page-btn {
+        padding: 12px 6px !important;
+        font-size: 12px !important;
+        min-height: 48px !important;
+        max-height: 48px !important;
+        letter-spacing: -0.3px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        word-break: keep-all !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        flex: 1 1 auto !important;
+        flex-shrink: 0 !important;
+        flex-grow: 1 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+    }
+    
+    .nav-buttons .page-btn i {
+        margin-right: 4px !important;
+        font-size: 14px !important;
+        flex-shrink: 0 !important;
     }
     
     .document-card {
@@ -402,15 +471,39 @@ html {
 /* Focus styles for accessibility */
 .page-btn:focus,
 .download-btn:focus {
-    outline: 2px solid var(--spring-green);
+    outline: 2px solid var(--linux-terminal-green);
     outline-offset: 2px;
+}
+
+/* Terminal-like blinking cursor */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Matrix-like effect for cards */
+.document-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.01) 2px,
+        rgba(0, 255, 0, 0.01) 4px
+    );
+    pointer-events: none;
 }
 
 /* Print styles */
 @media print {
     header {
         background: none !important;
-        color: var(--spring-dark) !important;
+        color: black !important;
         box-shadow: none !important;
     }
     
@@ -423,23 +516,24 @@ html {
     .page-btn,
     .download-btn {
         background: none !important;
-        color: var(--spring-dark) !important;
-        border: 1px solid var(--spring-green) !important;
+        color: black !important;
+        border: 1px solid black !important;
     }
 }
 
-/* 헤더 메뉴 - Spring 테마 */
+/* 헤더 메뉴 - Linux 테마 */
 .header-menu {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     padding: 15px 20px;
-    background: linear-gradient(135deg, #6db33f 0%, #5a9e3a 100%);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    border-bottom: 2px solid var(--linux-terminal-green);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border: 1px solid var(--linux-terminal-green);
 }
 
 .header-menu a {
@@ -447,27 +541,29 @@ html {
     align-items: center;
     justify-content: center;
     padding: 12px 8px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    background: rgba(0, 255, 0, 0.1);
+    color: var(--linux-terminal-green);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 500;
     font-size: 14px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 255, 0, 0.3);
     backdrop-filter: blur(10px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     letter-spacing: -0.5px;
     min-height: 46px;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 }
 
 .header-menu a:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 255, 0, 0.2);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.3);
+    border-color: var(--linux-terminal-green);
+    text-shadow: 0 0 5px var(--linux-terminal-green);
 }
 
 .header-menu a i {
@@ -611,7 +707,7 @@ html {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        border-radius: 20px;
+        border-radius: 3px;
         flex: 1 1 auto;
         flex-shrink: 0;
         flex-grow: 1;
@@ -654,7 +750,7 @@ html {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        border-radius: 15px;
+        border-radius: 2px;
         flex: 1 1 auto;
         flex-shrink: 0;
         flex-grow: 1;
@@ -664,143 +760,5 @@ html {
         margin-right: 2px;
         font-size: 12px;
         flex-shrink: 0;
-    }
-}
-
-/* nav-buttons 클래스에 대한 모바일 2열 5행 레이아웃 */
-@media (max-width: 768px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 8px !important;
-        padding: 15px 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-        position: relative !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 12px 6px !important;
-        font-size: 12px !important;
-        min-height: 48px !important;
-        max-height: 48px !important;
-        letter-spacing: -0.3px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 4px !important;
-        font-size: 14px !important;
-        flex-shrink: 0 !important;
-    }
-}
-
-/* 480px 이하 - 소형 모바일 2열 5행 균등 배치 */
-@media (max-width: 480px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 6px !important;
-        padding: 12px 10px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 10px 4px !important;
-        font-size: 11px !important;
-        min-height: 46px !important;
-        max-height: 46px !important;
-        letter-spacing: -0.4px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        border-radius: 20px !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 3px !important;
-        font-size: 13px !important;
-        flex-shrink: 0 !important;
-    }
-}
-
-/* 360px 이하 - 초소형 모바일 2열 5행 균등 배치 */
-@media (max-width: 360px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 4px !important;
-        padding: 10px 8px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 8px 3px !important;
-        font-size: 10px !important;
-        min-height: 44px !important;
-        max-height: 44px !important;
-        letter-spacing: -0.5px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        border-radius: 20px !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 2px !important;
-        font-size: 12px !important;
-        flex-shrink: 0 !important;
     }
 } 

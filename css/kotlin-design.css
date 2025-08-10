@@ -6,21 +6,25 @@
 }
 
 :root {
-    --spring-green: #6db33f;
-    --spring-dark-green: #5a9a35;
-    --spring-light-green: #7bc142;
-    --spring-accent: #34495e;
-    --spring-light: #ecf0f1;
-    --spring-dark: #2c3e50;
-    --spring-gradient: linear-gradient(135deg, #6db33f 0%, #5a9a35 100%);
-    --shadow-light: 0 2px 10px rgba(109, 179, 63, 0.1);
-    --shadow-medium: 0 4px 20px rgba(109, 179, 63, 0.15);
-    --shadow-heavy: 0 8px 30px rgba(109, 179, 63, 0.2);
+    --kotlin-purple: #7F52FF;
+    --kotlin-dark-purple: #6B46C1;
+    --kotlin-light-purple: #9333EA;
+    --kotlin-orange: #F88909;
+    --kotlin-dark-orange: #EA580C;
+    --kotlin-light-orange: #FB923C;
+    --kotlin-accent: #1E293B;
+    --kotlin-light: #F1F5F9;
+    --kotlin-dark: #0F172A;
+    --kotlin-gradient: linear-gradient(135deg, #7F52FF 0%, #F88909 100%);
+    --kotlin-purple-gradient: linear-gradient(135deg, #7F52FF 0%, #6B46C1 100%);
+    --shadow-light: 0 2px 10px rgba(127, 82, 255, 0.1);
+    --shadow-medium: 0 4px 20px rgba(127, 82, 255, 0.15);
+    --shadow-heavy: 0 8px 30px rgba(127, 82, 255, 0.2);
 }
 
 body {
-    background: linear-gradient(135deg, #f8fffe 0%, #f0f8f0 100%);
-    color: var(--spring-dark);
+    background: linear-gradient(135deg, #faf7ff 0%, #f3f0ff 100%);
+    color: var(--kotlin-dark);
     line-height: 1.6;
     min-height: 100vh;
 }
@@ -36,7 +40,7 @@ header {
     text-align: center;
     margin-bottom: 50px;
     padding: 50px 0 60px 0;
-    background: var(--spring-gradient);
+    background: var(--kotlin-gradient);
     border-radius: 20px;
     color: white;
     box-shadow: var(--shadow-medium);
@@ -52,7 +56,7 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="spring-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23spring-pattern)"/></svg>');
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="kotlin-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="10,5 15,10 10,15 5,10" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23kotlin-pattern)"/></svg>');
     opacity: 0.3;
 }
 
@@ -68,16 +72,16 @@ h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.spring-logo {
+.kotlin-logo {
     display: inline-block;
     margin-right: 15px;
     font-size: 3rem;
-    animation: springBounce 2s ease-in-out infinite;
+    animation: kotlinPulse 2s ease-in-out infinite;
 }
 
-@keyframes springBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes kotlinPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 .description {
@@ -99,7 +103,6 @@ h1 {
     padding: 0 20px;
 }
 
-/* 5,6,7,8번째 메뉴는 두 번째 줄에 순서대로 배치 */
 .nav-buttons .page-btn:nth-child(5) {
     grid-column: 1;
     grid-row: 2;
@@ -120,14 +123,8 @@ h1 {
     grid-row: 2;
 }
 
-/* 9,10번째 메뉴는 세 번째 줄에 배치 */
 .nav-buttons .page-btn:nth-child(9) {
     grid-column: 1;
-    grid-row: 3;
-}
-
-.nav-buttons .page-btn:nth-child(10) {
-    grid-column: 2;
     grid-row: 3;
 }
 
@@ -157,6 +154,12 @@ h1 {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+.page-btn.active {
+    background: rgba(255, 255, 255, 0.4) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 .page-btn i {
     margin-right: 8px;
     transition: transform 0.3s ease;
@@ -180,7 +183,7 @@ h1 {
     padding: 30px;
     box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
-    border: 1px solid rgba(109, 179, 63, 0.1);
+    border: 1px solid rgba(127, 82, 255, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -192,7 +195,7 @@ h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--spring-gradient);
+    background: var(--kotlin-gradient);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -204,26 +207,26 @@ h1 {
 .document-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-heavy);
-    border-color: var(--spring-green);
+    border-color: var(--kotlin-purple);
 }
 
 .document-icon {
     font-size: 3rem;
     margin-bottom: 20px;
-    color: var(--spring-green);
+    color: var(--kotlin-purple);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
     height: 80px;
-    background: rgba(109, 179, 63, 0.1);
+    background: rgba(127, 82, 255, 0.1);
     border-radius: 50%;
     margin: 0 auto 20px;
     transition: all 0.3s ease;
 }
 
 .document-card:hover .document-icon {
-    background: var(--spring-green);
+    background: var(--kotlin-gradient);
     color: white;
     transform: scale(1.1);
 }
@@ -232,13 +235,13 @@ h1 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 12px;
-    color: var(--spring-dark);
+    color: var(--kotlin-dark);
     text-align: center;
     line-height: 1.4;
 }
 
 .document-info {
-    color: #7f8c8d;
+    color: #64748B;
     font-size: 0.9rem;
     margin-bottom: 20px;
     text-align: center;
@@ -247,7 +250,7 @@ h1 {
 
 .download-btn {
     display: block;
-    background: var(--spring-gradient);
+    background: var(--kotlin-gradient);
     color: white;
     padding: 12px 24px;
     border-radius: 50px;
@@ -281,7 +284,7 @@ h1 {
 
 .download-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(109, 179, 63, 0.3);
+    box-shadow: 0 6px 20px rgba(127, 82, 255, 0.3);
 }
 
 .download-btn:active {
@@ -292,10 +295,10 @@ h1 {
 footer {
     margin-top: 80px;
     text-align: center;
-    color: #7f8c8d;
+    color: #64748B;
     font-size: 0.9rem;
     padding: 30px 0;
-    border-top: 1px solid rgba(109, 179, 63, 0.1);
+    border-top: 1px solid rgba(127, 82, 255, 0.1);
 }
 
 /* Loading Animation */
@@ -325,8 +328,7 @@ footer {
     .nav-buttons .page-btn:nth-child(6),
     .nav-buttons .page-btn:nth-child(7),
     .nav-buttons .page-btn:nth-child(8),
-    .nav-buttons .page-btn:nth-child(9),
-    .nav-buttons .page-btn:nth-child(10) {
+    .nav-buttons .page-btn:nth-child(9) {
         grid-column: auto;
         grid-row: auto;
     }
@@ -341,7 +343,7 @@ footer {
         font-size: 2rem;
     }
     
-    .spring-logo {
+    .kotlin-logo {
         font-size: 2.5rem;
     }
     
@@ -354,6 +356,18 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         padding: 0 15px;
+    }
+    
+    .nav-buttons .page-btn:nth-child(7) {
+        grid-column: 1;
+    }
+    
+    .nav-buttons .page-btn:nth-child(8) {
+        grid-column: 2;
+    }
+    
+    .nav-buttons .page-btn:nth-child(9) {
+        grid-column: 1;
     }
     
     .page-btn {
@@ -388,6 +402,12 @@ footer {
         gap: 10px;
     }
     
+    .nav-buttons .page-btn:nth-child(7),
+    .nav-buttons .page-btn:nth-child(8),
+    .nav-buttons .page-btn:nth-child(9) {
+        grid-column: 1;
+    }
+    
     .page-btn {
         padding: 14px 20px;
         font-size: 0.9rem;
@@ -402,41 +422,19 @@ html {
 /* Focus styles for accessibility */
 .page-btn:focus,
 .download-btn:focus {
-    outline: 2px solid var(--spring-green);
+    outline: 2px solid var(--kotlin-purple);
     outline-offset: 2px;
 }
 
-/* Print styles */
-@media print {
-    header {
-        background: none !important;
-        color: var(--spring-dark) !important;
-        box-shadow: none !important;
-    }
-    
-    .document-card {
-        break-inside: avoid;
-        box-shadow: none !important;
-        border: 1px solid #ddd !important;
-    }
-    
-    .page-btn,
-    .download-btn {
-        background: none !important;
-        color: var(--spring-dark) !important;
-        border: 1px solid var(--spring-green) !important;
-    }
-}
-
-/* 헤더 메뉴 - Spring 테마 */
+/* 헤더 메뉴 스타일 */
 .header-menu {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     padding: 15px 20px;
-    background: linear-gradient(135deg, #6db33f 0%, #5a9e3a 100%);
+    background: var(--kotlin-gradient);
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-medium);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -631,7 +629,7 @@ html {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(5, 1fr);
         grid-auto-flow: row;
-        gap: 5px;
+        gap: 4px;
         padding: 10px 8px;
         width: 100%;
         box-sizing: border-box;
@@ -654,7 +652,7 @@ html {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        border-radius: 15px;
+        border-radius: 20px;
         flex: 1 1 auto;
         flex-shrink: 0;
         flex-grow: 1;
@@ -679,7 +677,6 @@ html {
         width: 100% !important;
         box-sizing: border-box !important;
         max-width: none !important;
-        position: relative !important;
     }
     
     .nav-buttons .page-btn {
@@ -713,94 +710,24 @@ html {
     }
 }
 
-/* 480px 이하 - 소형 모바일 2열 5행 균등 배치 */
-@media (max-width: 480px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 6px !important;
-        padding: 12px 10px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
+/* Print styles */
+@media print {
+    header {
+        background: none !important;
+        color: var(--kotlin-dark) !important;
+        box-shadow: none !important;
     }
     
-    .nav-buttons .page-btn {
-        padding: 10px 4px !important;
-        font-size: 11px !important;
-        min-height: 46px !important;
-        max-height: 46px !important;
-        letter-spacing: -0.4px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        border-radius: 20px !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
+    .document-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
     }
     
-    .nav-buttons .page-btn i {
-        margin-right: 3px !important;
-        font-size: 13px !important;
-        flex-shrink: 0 !important;
-    }
-}
-
-/* 360px 이하 - 초소형 모바일 2열 5행 균등 배치 */
-@media (max-width: 360px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 4px !important;
-        padding: 10px 8px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 8px 3px !important;
-        font-size: 10px !important;
-        min-height: 44px !important;
-        max-height: 44px !important;
-        letter-spacing: -0.5px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        border-radius: 20px !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 2px !important;
-        font-size: 12px !important;
-        flex-shrink: 0 !important;
+    .page-btn,
+    .download-btn {
+        background: none !important;
+        color: var(--kotlin-dark) !important;
+        border: 1px solid var(--kotlin-purple) !important;
     }
 } 

@@ -6,21 +6,25 @@
 }
 
 :root {
-    --spring-green: #6db33f;
-    --spring-dark-green: #5a9a35;
-    --spring-light-green: #7bc142;
-    --spring-accent: #34495e;
-    --spring-light: #ecf0f1;
-    --spring-dark: #2c3e50;
-    --spring-gradient: linear-gradient(135deg, #6db33f 0%, #5a9a35 100%);
-    --shadow-light: 0 2px 10px rgba(109, 179, 63, 0.1);
-    --shadow-medium: 0 4px 20px rgba(109, 179, 63, 0.15);
-    --shadow-heavy: 0 8px 30px rgba(109, 179, 63, 0.2);
+    --java-orange: #f89820;
+    --java-red: #ed8b00;
+    --java-blue: #5382a1;
+    --java-dark-blue: #2f4f4f;
+    --java-light-blue: #7ba8c7;
+    --java-white: #ffffff;
+    --java-gray: #f4f4f4;
+    --java-dark-gray: #333333;
+    --java-code-bg: #1e1e1e;
+    --java-gradient: linear-gradient(135deg, #f89820 0%, #ed8b00 100%);
+    --java-card-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    --shadow-light: 0 2px 10px rgba(248, 152, 32, 0.1);
+    --shadow-medium: 0 4px 20px rgba(248, 152, 32, 0.15);
+    --shadow-heavy: 0 8px 30px rgba(248, 152, 32, 0.2);
 }
 
 body {
-    background: linear-gradient(135deg, #f8fffe 0%, #f0f8f0 100%);
-    color: var(--spring-dark);
+    background: linear-gradient(135deg, #fafbfc 0%, #f1f3f4 100%);
+    color: var(--java-dark-gray);
     line-height: 1.6;
     min-height: 100vh;
 }
@@ -36,10 +40,10 @@ header {
     text-align: center;
     margin-bottom: 50px;
     padding: 50px 0 60px 0;
-    background: var(--spring-gradient);
+    background: var(--java-gradient);
     border-radius: 20px;
     color: white;
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-heavy);
     position: relative;
     overflow: hidden;
     min-height: 280px;
@@ -52,8 +56,18 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="spring-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23spring-pattern)"/></svg>');
-    opacity: 0.3;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="java-pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><text x="15" y="20" text-anchor="middle" fill="rgba(255,255,255,0.05)" font-size="12" font-family="monospace">{ }</text></pattern></defs><rect width="100" height="100" fill="url(%23java-pattern)"/></svg>');
+    opacity: 0.6;
+}
+
+header::after {
+    content: 'public class ModernJava { }';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
 }
 
 header > * {
@@ -66,18 +80,22 @@ h1 {
     margin-bottom: 15px;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
 }
 
-.spring-logo {
+.java-logo {
     display: inline-block;
     margin-right: 15px;
     font-size: 3rem;
-    animation: springBounce 2s ease-in-out infinite;
+    animation: javaBounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-@keyframes springBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes javaBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-5deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+    75% { transform: translateY(-3px) rotate(3deg); }
 }
 
 .description {
@@ -138,7 +156,7 @@ h1 {
     background: rgba(255, 255, 255, 0.2);
     color: white;
     padding: 14px 20px;
-    border-radius: 50px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -175,12 +193,12 @@ h1 {
 }
 
 .document-card {
-    background: white;
+    background: var(--java-card-gradient);
     border-radius: 16px;
     padding: 30px;
     box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
-    border: 1px solid rgba(109, 179, 63, 0.1);
+    border: 1px solid rgba(248, 152, 32, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -192,9 +210,20 @@ h1 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--spring-gradient);
+    background: var(--java-gradient);
     transform: scaleX(0);
     transition: transform 0.3s ease;
+}
+
+.document-card::after {
+    content: '// Java Code';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: rgba(248, 152, 32, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
 }
 
 .document-card:hover::before {
@@ -204,26 +233,44 @@ h1 {
 .document-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-heavy);
-    border-color: var(--spring-green);
+    border-color: var(--java-orange);
 }
 
 .document-icon {
     font-size: 3rem;
     margin-bottom: 20px;
-    color: var(--spring-green);
+    color: var(--java-orange);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
     height: 80px;
-    background: rgba(109, 179, 63, 0.1);
+    background: rgba(248, 152, 32, 0.1);
     border-radius: 50%;
     margin: 0 auto 20px;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.document-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: var(--java-gradient);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.document-card:hover .document-icon::before {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .document-card:hover .document-icon {
-    background: var(--spring-green);
     color: white;
     transform: scale(1.1);
 }
@@ -232,13 +279,15 @@ h1 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 12px;
-    color: var(--spring-dark);
+    color: var(--java-dark-gray);
     text-align: center;
     line-height: 1.4;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
 }
 
 .document-info {
-    color: #7f8c8d;
+    color: #666;
     font-size: 0.9rem;
     margin-bottom: 20px;
     text-align: center;
@@ -247,10 +296,10 @@ h1 {
 
 .download-btn {
     display: block;
-    background: var(--spring-gradient);
+    background: var(--java-gradient);
     color: white;
     padding: 12px 24px;
-    border-radius: 50px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -259,6 +308,9 @@ h1 {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
 }
 
 .download-btn::before {
@@ -281,7 +333,7 @@ h1 {
 
 .download-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(109, 179, 63, 0.3);
+    box-shadow: 0 6px 20px rgba(248, 152, 32, 0.3);
 }
 
 .download-btn:active {
@@ -292,10 +344,10 @@ h1 {
 footer {
     margin-top: 80px;
     text-align: center;
-    color: #7f8c8d;
+    color: #666;
     font-size: 0.9rem;
     padding: 30px 0;
-    border-top: 1px solid rgba(109, 179, 63, 0.1);
+    border-top: 1px solid rgba(248, 152, 32, 0.1);
 }
 
 /* Loading Animation */
@@ -312,6 +364,19 @@ footer {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* Java-specific animations */
+@keyframes codeTyping {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+.document-card:hover .document-title {
+    animation: codeTyping 0.5s ease-out;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--java-orange);
 }
 
 /* Responsive Design */
@@ -341,7 +406,7 @@ footer {
         font-size: 2rem;
     }
     
-    .spring-logo {
+    .java-logo {
         font-size: 2.5rem;
     }
     
@@ -351,14 +416,45 @@ footer {
     }
     
     .nav-buttons {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding: 0 15px;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: repeat(5, 1fr) !important;
+        grid-auto-flow: row !important;
+        gap: 8px !important;
+        padding: 15px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: none !important;
     }
     
-    .page-btn {
-        padding: 12px 16px;
-        font-size: 0.85rem;
+    .nav-buttons .page-btn {
+        padding: 12px 6px !important;
+        font-size: 12px !important;
+        min-height: 48px !important;
+        max-height: 48px !important;
+        letter-spacing: -0.3px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        word-break: keep-all !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        flex: 1 1 auto !important;
+        flex-shrink: 0 !important;
+        flex-grow: 1 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+    }
+    
+    .nav-buttons .page-btn i {
+        margin-right: 4px !important;
+        font-size: 14px !important;
+        flex-shrink: 0 !important;
     }
     
     .document-card {
@@ -383,6 +479,10 @@ footer {
         font-size: 2rem;
     }
     
+    .document-title {
+        font-size: 1.1rem;
+    }
+    
     .nav-buttons {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -402,15 +502,20 @@ html {
 /* Focus styles for accessibility */
 .page-btn:focus,
 .download-btn:focus {
-    outline: 2px solid var(--spring-green);
+    outline: 2px solid var(--java-orange);
     outline-offset: 2px;
+}
+
+/* Java code-like effects */
+.document-card:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
 }
 
 /* Print styles */
 @media print {
     header {
         background: none !important;
-        color: var(--spring-dark) !important;
+        color: var(--java-dark-gray) !important;
         box-shadow: none !important;
     }
     
@@ -423,18 +528,18 @@ html {
     .page-btn,
     .download-btn {
         background: none !important;
-        color: var(--spring-dark) !important;
-        border: 1px solid var(--spring-green) !important;
+        color: var(--java-dark-gray) !important;
+        border: 1px solid var(--java-orange) !important;
     }
 }
 
-/* 헤더 메뉴 - Spring 테마 */
+/* 헤더 메뉴 - Modern Java 테마 */
 .header-menu {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     padding: 15px 20px;
-    background: linear-gradient(135deg, #6db33f 0%, #5a9e3a 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -664,143 +769,5 @@ html {
         margin-right: 2px;
         font-size: 12px;
         flex-shrink: 0;
-    }
-}
-
-/* nav-buttons 클래스에 대한 모바일 2열 5행 레이아웃 */
-@media (max-width: 768px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 8px !important;
-        padding: 15px 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-        position: relative !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 12px 6px !important;
-        font-size: 12px !important;
-        min-height: 48px !important;
-        max-height: 48px !important;
-        letter-spacing: -0.3px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 4px !important;
-        font-size: 14px !important;
-        flex-shrink: 0 !important;
-    }
-}
-
-/* 480px 이하 - 소형 모바일 2열 5행 균등 배치 */
-@media (max-width: 480px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 6px !important;
-        padding: 12px 10px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 10px 4px !important;
-        font-size: 11px !important;
-        min-height: 46px !important;
-        max-height: 46px !important;
-        letter-spacing: -0.4px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        border-radius: 20px !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 3px !important;
-        font-size: 13px !important;
-        flex-shrink: 0 !important;
-    }
-}
-
-/* 360px 이하 - 초소형 모바일 2열 5행 균등 배치 */
-@media (max-width: 360px) {
-    .nav-buttons {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: repeat(5, 1fr) !important;
-        grid-auto-flow: row !important;
-        gap: 4px !important;
-        padding: 10px 8px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        max-width: none !important;
-    }
-    
-    .nav-buttons .page-btn {
-        padding: 8px 3px !important;
-        font-size: 10px !important;
-        min-height: 44px !important;
-        max-height: 44px !important;
-        letter-spacing: -0.5px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        word-break: keep-all !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        border-radius: 20px !important;
-        flex: 1 1 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-    }
-    
-    .nav-buttons .page-btn i {
-        margin-right: 2px !important;
-        font-size: 12px !important;
-        flex-shrink: 0 !important;
     }
 } 
