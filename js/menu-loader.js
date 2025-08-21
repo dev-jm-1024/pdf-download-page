@@ -35,6 +35,9 @@
             <a href="https://plusb3b.kr/pdf-download-page/download-error.html" class="page-btn">
                 <i class="fas fa-bug"></i> 디버깅 핸드북
             </a>
+            <a href="https://plusb3b.kr/pdf-download-page/my-github.html" class="page-btn">
+                <i class="fab fa-github"></i> My GitHub
+            </a>
         </div>
     `;
     
@@ -207,6 +210,7 @@
         .page-btn:nth-child(8) { animation-delay: 0.8s; }
         .page-btn:nth-child(9) { animation-delay: 0.9s; }
         .page-btn:nth-child(10) { animation-delay: 1.0s; }
+        .page-btn:nth-child(11) { animation-delay: 1.1s; }
 
         @keyframes menuFadeIn {
             from {
@@ -238,6 +242,52 @@
         }
         </style>
     `;
+    
+    // 전역 라이트 모드 강제 적용
+    function applyForceLightMode() {
+        try {
+            // 1) 브라우저에 라이트 컬러 스킴만 사용한다고 선언
+            if (!document.querySelector('meta[name="color-scheme"]')) {
+                const meta = document.createElement('meta');
+                meta.setAttribute('name', 'color-scheme');
+                meta.setAttribute('content', 'light');
+                document.head.appendChild(meta);
+            }
+            
+            // 2) 페이지에서 추가할 수 있는 다크 클래스 제거 및 재추가 방지
+            if (document.body) {
+                document.body.classList.remove('kotlin-dark-mode');
+                new MutationObserver(mutations => {
+                    for (const m of mutations) {
+                        if (m.type === 'attributes' && m.attributeName === 'class') {
+                            document.body.classList.remove('kotlin-dark-mode');
+                        }
+                    }
+                }).observe(document.body, { attributes: true });
+            }
+            
+            // 3) 다크 모드용 미디어쿼리를 덮는 라이트 오버라이드 스타일 주입
+            if (!document.querySelector('#force-light-styles')) {
+                const style = document.createElement('style');
+                style.id = 'force-light-styles';
+                style.textContent = `
+                    html { color-scheme: light !important; }
+                    /* 공통 컴포넌트 라이트 보장 */
+                    .page-btn { background: rgba(255, 255, 255, 0.2) !important; border-color: rgba(255, 255, 255, 0.3) !important; }
+                    .page-btn:hover { background: rgba(255, 255, 255, 0.3) !important; }       
+                    .document-card { background: #ffffff !important; color: inherit !important; }
+                    .document-info { color: #64748B !important; }
+                    /* 다크 환경에서도 라이트 유지 */
+                    @media (prefers-color-scheme: dark) {
+                        body { background: #ffffff !important; color: #0F172A !important; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        } catch (e) {
+            console.warn('라이트 모드 강제 적용 중 경고:', e);
+        }
+    }
     
     // 메뉴 로드 함수
     function loadMenu() {
@@ -348,7 +398,8 @@
                 'oop': 'download-oop.html',
                 'jsp': 'download-jsp.html',
                 'linux': 'download-linux.html',
-                'kotlin': 'download-kotlin.html'
+                'kotlin': 'download-kotlin.html',
+                'github': 'my-github.html'
             };
             
             if (pageMap[pageName]) {
@@ -367,7 +418,8 @@
                 'download-mysql.html': 'MySQL',
                 'download-jsp.html': 'JSP',
                 'download-linux.html': 'Linux',
-                'download-kotlin.html': 'Kotlin'
+                'download-kotlin.html': 'Kotlin',
+                'my-github.html': 'My GitHub'
             };
             
             return pageNames[currentPage] || '알 수 없음';
@@ -384,7 +436,8 @@
                 'OOP 설계',
                 'JSP',
                 'Linux',
-                'Kotlin'
+                'Kotlin',
+                'My GitHub'
             ];
         },
         
@@ -399,10 +452,14 @@
         }
     };
     
-    // DOM 로드 완료 시 메뉴 자동 로드
+    // DOM 로드 완료 시 라이트 모드 강제 적용 및 메뉴 자동 로드
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadMenu);
+        document.addEventListener('DOMContentLoaded', function() {
+            applyForceLightMode();
+            loadMenu();
+        });
     } else {
+        applyForceLightMode();
         loadMenu();
     }
     

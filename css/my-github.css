@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+:root {
+    --gh-black: #0D1117;
+    --gh-dark: #161B22;
+    --gh-gray: #24292F;
+    --gh-green: #2EA043;
+    --gh-green-dark: #238636;
+    --gh-accent: #58A6FF;
+    --gh-light: #F6F8FA;
+    --gh-text: #0F172A;
+    --gh-gradient: linear-gradient(135deg, #24292F 0%, #2EA043 100%);
+    --shadow-light: 0 2px 10px rgba(36, 41, 47, 0.12);
+    --shadow-medium: 0 4px 20px rgba(36, 41, 47, 0.18);
+    --shadow-heavy: 0 8px 30px rgba(36, 41, 47, 0.25);
+}
+
+body {
+    background: linear-gradient(135deg, #f7f9fc 0%, #eef3f6 100%);
+    color: var(--gh-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 50px 0 60px 0;
+    background: var(--gh-gradient);
+    border-radius: 20px;
+    color: white;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="octo-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="3" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23octo-pattern)"/></svg>');
+    opacity: 0.25;
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.github-logo {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 3rem;
+    animation: octoPulse 2s ease-in-out infinite;
+}
+
+@keyframes octoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* Document Cards */
+.documents {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.document-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(36, 41, 47, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.document-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gh-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.document-card:hover::before {
+    transform: scaleX(1);
+}
+
+.document-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--gh-green);
+}
+
+.document-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--gh-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(46, 160, 67, 0.12);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+}
+
+.document-card:hover .document-icon {
+    background: var(--gh-gradient);
+    color: white;
+    transform: scale(1.1);
+}
+
+.document-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--gh-gray);
+    text-align: center;
+    line-height: 1.4;
+}
+
+.document-info {
+    color: #64748B;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.download-btn {
+    display: block;
+    background: var(--gh-gradient);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(36, 41, 47, 0.2);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    margin-top: 80px;
+    text-align: center;
+    color: #64748B;
+    font-size: 0.9rem;
+    padding: 30px 0;
+    border-top: 1px solid rgba(36, 41, 47, 0.08);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        padding: 30px 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .github-logo {
+        font-size: 2.5rem;
+    }
+    
+    .documents {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 30px 20px;
+        margin: 0 -20px 30px;
+        border-radius: 0;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .document-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.download-btn:focus {
+    outline: 2px solid var(--gh-accent);
+    outline-offset: 2px;
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #0b0f14 0%, #0d1218 100%);
+        color: #ECEFF4;
+    }
+    
+    .document-card {
+        background: #0F172A;
+        color: #E5E7EB;
+        border-color: rgba(255, 255, 255, 0.06);
+    }
+    
+    .document-info {
+        color: #94A3B8;
+    }
+}
+
+/* Print styles */
+@media print {
+    header {
+        background: none !important;
+        color: var(--gh-text) !important;
+        box-shadow: none !important;
+    }
+    
+    .document-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .download-btn {
+        background: none !important;
+        color: var(--gh-text) !important;
+        border: 1px solid var(--gh-green) !important;
+    }
+}
+
+
