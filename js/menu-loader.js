@@ -32,6 +32,9 @@
             <a href="https://plusb3b.kr/pdf-download-page/download-kotlin.html" class="page-btn">
                 <i class="fas fa-code"></i> Kotlin
             </a>
+            <a href="https://plusb3b.kr/pdf-download-page/download-network.html" class="page-btn">
+                <i class="fas fa-network-wired"></i> Network
+            </a>
             <a href="https://plusb3b.kr/pdf-download-page/download-error.html" class="page-btn">
                 <i class="fas fa-bug"></i> 디버깅 핸드북
             </a>
@@ -77,7 +80,7 @@
              grid-row: 2;
          }
          
-         /* 9,10번째 메뉴는 세 번째 줄에 배치 */
+         /* 9,10,11번째 메뉴는 세 번째 줄에 배치 */
          .nav-buttons .page-btn:nth-child(9) {
              grid-column: 1;
              grid-row: 3;
@@ -85,6 +88,11 @@
          
          .nav-buttons .page-btn:nth-child(10) {
              grid-column: 2;
+             grid-row: 3;
+         }
+         
+         .nav-buttons .page-btn:nth-child(11) {
+             grid-column: 3;
              grid-row: 3;
          }
 
@@ -211,6 +219,7 @@
         .page-btn:nth-child(9) { animation-delay: 0.9s; }
         .page-btn:nth-child(10) { animation-delay: 1.0s; }
         .page-btn:nth-child(11) { animation-delay: 1.1s; }
+        .page-btn:nth-child(12) { animation-delay: 1.2s; }
 
         @keyframes menuFadeIn {
             from {
@@ -399,6 +408,7 @@
                 'jsp': 'download-jsp.html',
                 'linux': 'download-linux.html',
                 'kotlin': 'download-kotlin.html',
+                'network': 'download-network.html',
                 'github': 'my-github.html'
             };
             
@@ -419,6 +429,7 @@
                 'download-jsp.html': 'JSP',
                 'download-linux.html': 'Linux',
                 'download-kotlin.html': 'Kotlin',
+                'download-network.html': 'Network',
                 'my-github.html': 'My GitHub'
             };
             
@@ -437,6 +448,7 @@
                 'JSP',
                 'Linux',
                 'Kotlin',
+                'Network',
                 'My GitHub'
             ];
         },
@@ -474,6 +486,7 @@ console.log(`
 
 사용법:
 - MenuUtils.navigateTo('spring') : Spring Boot 페이지로 이동
+- MenuUtils.navigateTo('network') : Network 페이지로 이동
 - MenuUtils.getCurrentPage() : 현재 페이지 이름 반환
 - MenuUtils.reload() : 메뉴 다시 로드
 - Alt + 1~8 : 키보드로 메뉴 이동
